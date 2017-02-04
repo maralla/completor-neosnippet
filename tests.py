@@ -30,6 +30,6 @@ def test_parse():
     neo.ft = 'python'
 
     assert neo.parse('def') == [
+        {'menu': b'[neosnip] def world', 'word': b'def'},
         {'menu': b'[neosnip] hello def', 'word': b'defm'},
-        {'menu': b'[neosnip] def world', 'word': b'def'}
     ]

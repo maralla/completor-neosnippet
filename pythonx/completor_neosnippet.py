@@ -14,10 +14,12 @@ class Neosnippet(Completor):
     def _get_snippets():
         get_snippets = vim.Function(
             'neosnippet#helpers#get_completion_snippets')
-        return [{
+        snippets = [{
             'word': item[b'word'],
             'menu': b' '.join([b'[neosnip]', item[b'description']])
         } for item in get_snippets().values()]
+        snippets.sort(key=lambda x: x['word'])
+        return snippets
 
     def parse(self, base):
         if not self.ft or not base:
