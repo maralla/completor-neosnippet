@@ -3,7 +3,6 @@
 import vim
 from completor import Completor
 
-
 _cache = {}
 
 
@@ -16,8 +15,8 @@ class Neosnippet(Completor):
         get_snippets = vim.Function(
             'neosnippet#helpers#get_completion_snippets')
         return [{
-            'word': item['word'],
-            'menu': ' '.join(['[neosnip]', item['description']])
+            'word': item[b'word'],
+            'menu': b' '.join([b'[neosnip]', item[b'description']])
         } for item in get_snippets().values()]
 
     def parse(self, base):
@@ -30,5 +29,5 @@ class Neosnippet(Completor):
             except Exception:
                 _cache[self.ft] = []
 
-        pat = base.rstrip().rsplit(' ', 1)[-1]
+        pat = base.rstrip().rsplit(' ', 1)[-1].encode('utf-8')
         return [item for item in _cache[self.ft] if pat in item['word']]
