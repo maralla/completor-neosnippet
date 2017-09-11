@@ -16,6 +16,7 @@ class Neosnippet(Completor):
             'neosnippet#helpers#get_completion_snippets')
         snippets = [{
             'word': item[b'word'],
+            'dup': 1,
             'menu': b' '.join([b'[neosnip]', item[b'description']])
         } for item in get_snippets().values()]
         snippets.sort(key=lambda x: x['word'])
