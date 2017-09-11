@@ -31,6 +31,6 @@ def test_parse():
     neo.input_data = 'def'
 
     assert neo.parse('def') == [
-        {'menu': b'[neosnip] def world', 'word': b'def'},
-        {'menu': b'[neosnip] hello def', 'word': b'defm'},
+        {'dup': 1, 'menu': b'[neosnip] def world', 'word': b'def'},
+        {'dup': 1, 'menu': b'[neosnip] hello def', 'word': b'defm'},
     ]
