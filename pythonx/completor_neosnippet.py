@@ -31,5 +31,14 @@ class Neosnippet(Completor):
             except Exception:
                 _cache[self.ft] = []
 
-        pat = base.rstrip().rsplit(' ', 1)[-1].encode('utf-8')
-        return [item for item in _cache[self.ft] if pat in item['word']]
+        token = self.input_data.split()[-1]
+        candidates = [dict(item) for item in _cache[self.ft]
+                      if item['word'].startswith(token.encode('utf-8'))]
+
+        index = token.rfind(base)
+        if index > 0:
+            prefix = len(token[:index])
+            for c in candidates:
+                c['abbr'] = c['word']
+                c['word'] = c['word'][prefix:]
+        return candidates

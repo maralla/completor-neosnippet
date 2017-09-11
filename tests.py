@@ -28,6 +28,7 @@ from completor_neosnippet import Neosnippet  # noqa
 def test_parse():
     neo = Neosnippet()
     neo.ft = 'python'
+    neo.input_data = 'def'
 
     assert neo.parse('def') == [
         {'menu': b'[neosnip] def world', 'word': b'def'},
