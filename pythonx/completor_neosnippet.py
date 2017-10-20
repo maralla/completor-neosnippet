@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import vim
+import logging
 from completor import Completor
 
 _cache = {}
+
+logger = logging.getLogger('completor')
 
 
 class Neosnippet(Completor):
@@ -35,6 +38,7 @@ class Neosnippet(Completor):
         token = self.input_data.split()[-1]
         candidates = [dict(item) for item in _cache[self.ft]
                       if item['word'].startswith(token.encode('utf-8'))]
+        logger.info(candidates)
 
         index = token.rfind(base)
         if index > 0:
