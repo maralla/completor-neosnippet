@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import vim
 import logging
-from completor import Completor
+from completor import Completor, vim
 
 _cache = {}
 
