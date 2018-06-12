@@ -18,8 +18,8 @@ class Vim(object):
 sys.path.append('./pythonx')
 completor = types.ModuleType('completor')
 completor.Completor = MockComletor
+completor.vim = Vim()
 sys.modules['completor'] = completor
-sys.modules['vim'] = Vim()
 
 
 from completor_neosnippet import Neosnippet  # noqa
