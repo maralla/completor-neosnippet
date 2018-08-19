@@ -16,21 +16,21 @@ endfunction
 function! s:import_python()
   try
     exe s:py 'import completor_neosnippet'
-  catch /^Vim(python):/
+  catch /^Vim(py\(thon\|3\)):/
     call s:err('Fail to import completor_neosnippet')
     return
   endtry
 
   try
     exe s:py 'import completor, completers.common'
-  catch /^Vim(python):/
+  catch /^Vim(py\(thon\|3\)):/
     call s:err('Fail to import completor')
     return
   endtry
 
   try
     exe s:py 'completor.get("common").hooks.append(completor_neosnippet.Neosnippet.filetype)'
-  catch /^Vim(python):/
+  catch /^Vim(py\(thon\|3\)):/
     call s:err('Fail to add neosnippet hook')
   endtry
 endfunction
